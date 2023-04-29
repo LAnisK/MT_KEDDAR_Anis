@@ -1,3 +1,4 @@
+
 import projet as pr
 import initialisation as init
 import numpy as np
@@ -14,7 +15,7 @@ def decodageQRCode(filename):
     QRCode = Ha.lectureQRCode(QRCode, dataType, nbrBloc)
 
 
-decodageQRCode(r"C:\Users\SAM\Desktop\MT_KEDDAR_Anis\Exemples\qr_code_damier_ascii.png")
-decodageQRCode(r"C:\Users\SAM\Desktop\MT_KEDDAR_Anis\Exemples\qr_code_ssfiltre_ascii_corrupted.png")
-decodageQRCode(r"C:\Users\SAM\Desktop\MT_KEDDAR_Anis\Exemples\qr_code_ssfiltre_ascii_rotation.png")
-decodageQRCode(r"C:\Users\SAM\Desktop\MT_KEDDAR_Anis\Exemples\qr_code_ssfiltre_num.png")
+decodageQRCode("/Exemples/qr_code_damier_ascii.png")
+decodageQRCode("/Exemples/qr_code_ssfiltre_ascii_corrupted.png")
+decodageQRCode("/Exemples/qr_code_ssfiltre_ascii_rotation.png")
+decodageQRCode("/Exemples/qr_code_ssfiltre_num.png")

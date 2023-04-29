@@ -23,7 +23,7 @@ def generationSymbole():
 
     return symbole
 
-#QUESTION 1: rotation de l'image jusqu'à ce que le QR code soit bien orienté
+#QUESTION 1: retation de l'image jusqu'à ce que le QR code soit bien orienté
 
 #renvoie la matrice après rotation de 90° dans le sens horaire
 def rotationMatriceHoraire(mat):
