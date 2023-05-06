@@ -15,7 +15,7 @@ def decodageQRCode(filename):
     QRCode = Ha.lectureQRCode(QRCode, dataType, nbrBloc)
 
 
-decodageQRCode("/Exemples/qr_code_damier_ascii.png")
-decodageQRCode("/Exemples/qr_code_ssfiltre_ascii_corrupted.png")
-decodageQRCode("/Exemples/qr_code_ssfiltre_ascii_rotation.png")
-decodageQRCode("/Exemples/qr_code_ssfiltre_num.png")
+decodageQRCode(r"C:\Users\SAM\Desktop\Exemples/qr_code_damier_ascii.png")
+decodageQRCode(r"C:\Users\SAM\Desktop\Exemples/qr_code_ssfiltre_ascii_corrupted.png")
+decodageQRCode(r"C:\Users\SAM\Desktop\Exemples/qr_code_ssfiltre_ascii_rotation.png")
+decodageQRCode(r"C:\Users\SAM\Desktop\Exemples/qr_code_ssfiltre_num.png")

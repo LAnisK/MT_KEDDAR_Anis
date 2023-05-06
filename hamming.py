@@ -16,14 +16,6 @@ def bin2hex(base2nbr):
     caractere = hexa[2:len(hexa)]
     caractere = caractere.upper()
     return caractere
-#PRELIMINAIRES : convertir un entier en base2 (sous forme d'une liste de bits) en hexadécimal.
-def bin2hex(base2nbr):
-    #conversion en hexadecimal
-    hexa=hex(bin2int(base2nbr))
-    #on récupère uniquement les caractères héxadécimal
-    caractere = hexa[2:len(hexa)]
-    caractere = caractere.upper()
-    return caractere
 
 #PRELIMINAIRE : transforme un bit en son complémentaire
 def modifierBit(bit):
