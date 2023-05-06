@@ -3,25 +3,21 @@ from settings import TailleQR
 
 #QUESTION 1: génération de la matrice représentant le symbole au coin du QR code
 def generationSymbole():
-    #La symbole est au total un carré de 8 pixels sur 8
-    symbole = np.ones([8, 8], dtype=int)
-    #Création du carré noir de 3 pixels sur 3
-    for i in range(2,5):
-        for j in range(2,5):
-            symbole[i][j] = 0
+     # dimensions de la matrice
+    taille = 7
 
-    #Création de la bande noire
-    #Bande verticale
-    for i in range(7):
-        symbole[i][0]=0
-        symbole[i][6]=0
+    # initialisation de la matrice
+    matrice = np.zeros((taille, taille), dtype=np.uint8)
 
-    #Bande Horizontale
-    for j in range(7):
-        symbole[0][j]=0
-        symbole[6][j]=0
+    # remplissage de la matrice
+    matrice[1:6, 1:6] = 1
+    matrice[0, :] = 2
+    matrice[-1, :] = 2
+    matrice[:, 0] = 2
+    matrice[:, -1] = 2
+    matrice[2, 2] = 0
 
-    return symbole
+    return matrice
 
 #QUESTION 1: retation de l'image jusqu'à ce que le QR code soit bien orienté
 
@@ -32,20 +28,25 @@ def rotationMatriceHoraire(mat):
 
 def rotationQRCode(QRCode):
 
-    #On récupère le carré de 8 pixels par 8 en bas à droite du QR code
-    coinBasDroite = QRCode[TailleQR-8:TailleQR, TailleQR-8:TailleQR]
+   # génération du symbole de référence
+    symbole_ref = generationSymbole()
 
-    symbole = generationSymbole()
-    #On retourne à 180° le symbole pour simuler son positionnement en bas à droite du QR code.
-    symbole = rotationMatriceHoraire(rotationMatriceHoraire(symbole))
+    # dimensions de l'image
+    hauteur, largeur = QRCode.shape
 
-    #Si le symbole se trouve en bas à droite du QR code, cela signifie qu'il n'est pas orienté correctement
-    #On effectue alors une rotation du QR code
-    while np.array_equal(coinBasDroite, symbole):
-        QRCode = rotationMatriceHoraire(QRCode)
-        coinBasDroite = QRCode[TailleQR-8:TailleQR, TailleQR-8:TailleQR]
+    # position du coin inférieur droit
+    x, y = largeur-8, hauteur-8
 
-    return QRCode
+    # recherche du coin où le symbole n'apparaît pas
+    for i in range(2):
+        for j in range(2):
+            x_test, y_test = x-7*i, y-7*j
+            if np.array_equal(QRCode[y_test:y_test+7, x_test:x_test+7], symbole_ref):
+                # symbole trouvé, pas besoin de rotation
+                return QRCode
+    # symbole non trouvé, rotation nécessaire
+    image_rot = np.rot90(QRCode, 2)
+    return image_rot
 
 
 #QUESTION 2 : vérification que les lignes de pixels alternés apparaissent correctement
