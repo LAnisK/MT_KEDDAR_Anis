@@ -29,7 +29,7 @@ def add_hamming_parity_bits(binary):
     binary_array = np.array(list(binary), dtype=int)
 
     # Multiplication de la matrice de contrôle de parité avec les données binaires
-    parity_bits = np.dot(H, binary_array) % 2
+    parity_bits = np.dot(1, binary_array) % 2
 
     # Ajout des bits de parité au message binaire
     encoded_message = np.concatenate((binary_array, parity_bits))
@@ -61,4 +61,4 @@ for i in range(size):
 image = Image.fromarray(np.uint8(matrix * 255))
 
 # Enregistrement de l'image du QR code
-image.save("qr_code.png")
+image.save("qr_codel.png")
